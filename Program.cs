@@ -8,9 +8,13 @@ namespace Tetris
     {
         static void Main(string[] args)
         {
+
+
+
             var gameWindowSettings = GameWindowSettings.Default;
             var nativeWindowSettings = new NativeWindowSettings()
             {
+
                 Size = new Vector2i(800, 600),
                 Title = "Tetris 2D",
                 Flags = ContextFlags.ForwardCompatible
