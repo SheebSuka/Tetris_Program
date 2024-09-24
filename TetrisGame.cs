@@ -45,7 +45,7 @@ namespace Tetris
             {
                 for (int x = 0; x < columnas; x++)
                 {
-                    if (tablero[x, y] == 0)
+                    if (tablero[y, x] == 0)
                     {
                         GL.Color3(0.8f, 0.8f, 0.8f);
                     }
