@@ -1,20 +1,35 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
+using System.Numerics;
 
 namespace Tetris
 {
     internal class TetrisGame : GameWindow
     {
 
-        private int[,] tablero;
-        private const int columnas = 10;
-        private const int filas = 20;
-        private const int tamanoCelda = 30;
-        public TetrisGame(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
+        private int _vao, _vbo;
+        private Shader _shader;
+        private Vector2[] vertices = new Vector2[]
         {
-            tablero = new int[filas, columnas];
-        }
+            new Vector2(0.0f,0.0f),
+            new Vector2(0.0f, 1.0f),
+            new Vector2(1.0f, 1.0f),
+            new Vector2(1.0f, 0.0f),
+        };
+
+        private Matrix4x4 _projectionMatrix;
+
+        public TetrisGame(int width, int height, string title)
+            : base(GameWindowSettings.Default, new NativeWindowSettings()
+            { Size = (width, height), Title = title });
+
+
+
+        //public TetrisGame(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
+        //{
+        //    tablero = new int[filas, columnas];
+        //}
 
 
         protected override void OnLoad()
@@ -26,13 +41,13 @@ namespace Tetris
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
             base.OnUpdateFrame(args);
-            //Logia de movimiento y cntrol del juego
+            //Logia de movimiento y control del juego
         }
 
         protected override void OnRenderFrame(FrameEventArgs args)
         {
             base.OnRenderFrame(args);
-            GL.Clear(ClearBufferMask.ColorBufferBit);
+            GL.Clear(ClearBufferMask.ColorBufferBit);//<-Hay pedos aqui
             //Codigo para dibujar cosas en el tablero
             dibujarTablero();
 
